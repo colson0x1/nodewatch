@@ -1,0 +1,26 @@
+{
+  "name": "nodewatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colson0x1/nodewatch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colson0x1/nodewatch/issues"
+  },
+  "homepage": "https://github.com/colson0x1/nodewatch#readme",
+  "bin": {
+    "nodewatch": "app.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  }
+}
