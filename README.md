@@ -103,11 +103,7 @@ This will create a symbolic link for the app.js file, allowing you to run the ap
 
 ## Usage
 
-1. Install NodeWatch globally using npm:
-
-```bash
-$ npm install -g nodewatch
-```
+1. Install NodeWatch by cloning through github.
 
 2. Navigate to the directory of your Node.js application.
 
