@@ -10,6 +10,61 @@
 - Supports custom file names and paths
 - Uses debouncing to prevent excessive restarts during rapid file changes
 
+## Technology behind NODE PROCESSES
+
+NODE
+child processes
+
+https://nodejs.org/api/child_process.html#child_processspawncommand-args-options
+
+insides on **process**:
+when we start a program from terminal,  a process is created and its assigned. three communication channels: `stdin`, `stdout` and `stderr`
+
+those 3s are used to communicate with the running process. `stdin` can be used to receive information directly from the terminal. about `stdout`  and `stderr`:  whenever our program throws an error or console logs something, its (the process) is going to emit the information over the two channels: `stdout` and `stderr`. in other words, whenever you console log in node applications, `stdout` is responsible to pass that information to the terminal. in similar fashion, if program throws error or we want to construct error, than our process writes some information to the `stderr` channel and its sent to the terminal.
+
+**child process**
+when we created the child process, the `stdout`, `stdin`, `stderr` of child process , nothing is waiting to receive output in the `stdout` or `stderr` or give input to `stdin`. in order for it to communicate, we can pass argument in span like:
+```js
+{ stdio: 'inherit' }
+```
+it says, when we created child process, take the `stdin`, `stdout`, `stderr` that belong to our current process (primary process). hence now, the child process `stdout` will be sent to parent process `stdout` and it will be sent to the terminal. rest happens in similar fashion too.
+
+
+```
+exec - (shell: yes), (stream: no)
+execFile - (shell: no), (stream: no)
+spawn - (shell: no), (stream: yes)
+fork - (shell: no), (stream: yes)
+```
+
+### SHELL
+`exec` wil use shell hence `stdout` can be passed to other program but those three: `execFile`, `spawn` and `fork` can only run singular program at a time w arguments.
+
+### STREAM
+stream means how information from **standard IO** from that child process gets sents back to the primary process.
+
+when `exec` and `execFile` are used, the **parent process** creates a **new process**. and its consoles.logs in order. when that each console.logs is completed i.e when the **process is completed**, its sent to the **output** which has all the logs, the process generated and that's sent to the **parent process**.
+
+when `spawn` and `fork` are used, the **parent process** creates a new **process process** and this time, suppose there are 5 console.logs, here, each console.logs are sent to the **parent process** through the **output**: `stdout` and when the **process is completed**,  we don't get any bundle of information as its already sent to the primary process.
+
+`spawn` is unique. it has some available options which when passed can acts like `exec`, `execFile`, and `fork`. like if we pass it a `shell` argument as described in the docs, we can make `spawn` use the **shell** which by default it does not use it.
+
+https://nodejs.org/api/child_process.html#child_processspawncommand-args-options
+
+use of `spawn` example
+
+```js
+const { spawn } = require('node:child_process');
+...
+const start = debounce(() => {
+  spawn('node', [name], { stdio: 'inherit' });
+}, 100);
+```
+
+docs
+https://nodejs.org/api/child_process.html
+
+
 # Installation
 
 ## Installation
