@@ -21,6 +21,8 @@
     "nodewatch": "app.js"
   },
   "dependencies": {
-    "chokidar": "^3.5.3"
+    "caporal": "^1.4.0",
+    "chokidar": "^3.5.3",
+    "lodash.debounce": "^4.0.8"
   }
 }
