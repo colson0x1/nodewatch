@@ -1,6 +1,8 @@
-# NodeWatch
+# nodeWatch
 
-**NodeWatch** is a command-line tool that monitors changes in a Node.js application and automatically restarts it whenever a file is added, modified, or removed. It aims to improve the development workflow by eliminating the need to manually restart the application after every code change.
+**nodeWatch** is a command-line tool that monitors changes in a Node.js application and automatically restarts it whenever a file is added, modified, or removed. It aims to improve the development workflow by eliminating the need to manually restart the application after every code change.
+
+![nodewatch starting new process detecting change in express server](https://i.imgur.com/wZfUcIr.png)
 
 ## Features
 
@@ -65,7 +67,7 @@ chokidar
 
 The `chokidar` package is used to watch for file changes in the current directory. When a change is detected (add, modify, or remove), the `start` function is called using `lodash.debounce` to prevent excessive restarts during rapid file changes. The `start` function kills the previous child process (if it exists) and starts a new one by spawning the Node.js application with the specified file name.
 
-Overall, NodeWatch provides an efficient and user-friendly way to streamline the development process by automatically monitoring and restarting the Node.js application on file changes, enhancing productivity, and reducing manual effort.
+Overall, nodeWatch provides an efficient and user-friendly way to streamline the development process by automatically monitoring and restarting the Node.js application on file changes, enhancing productivity, and reducing manual effort.
 
 ## Installation
 
@@ -137,3 +139,15 @@ You will see the terminal logs indicating the startup process. While the applica
 - [chokidar](https://www.npmjs.com/package/chokidar) - For monitoring file changes in the directory.
 - [caporal](https://www.npmjs.com/package/caporal) - For building the command-line interface.
 - [chalk](https://www.npmjs.com/package/chalk) - For styling and coloring the
+
+## Screenshots 
+
+![nodewatch help command](https://i.imgur.com/RmdKWN0.png)
+
+![nodewatch starting a process](https://i.imgur.com/a2zljI5.png)
+
+![nodewatch starting a new process while running current process](https://i.imgur.com/QUeJo3g.png)
+
+![nodewatch starting express server process](https://i.imgur.com/1kNizWG.png)
+
+![nodewatch starting new process detecting change in express server](https://i.imgur.com/wZfUcIr.png)
