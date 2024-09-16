@@ -7,13 +7,13 @@
 ## Run as NPM Module
 
 ```
-$ sudo npm install -g nodewatch
+$ sudo npm install -g browatch
 // Execute on the node project you're working!
-$ nodewatch [server-file]
+$ browatch [server-file]
 i.e
-$ nodewatch index.js
-OR
 $ browatch index.js
+OR
+$ nodewatch index.js
 ```
 
 ## Features
@@ -113,14 +113,14 @@ This will create a symbolic link for the app.js file, allowing you to run the ap
 
 ## Usage
 
-1. Install NodeWatch by cloning the repository.
+1. Install NodeWatch/browatch by cloning the repository.
 
 2. Navigate to the directory of your Node.js application.
 
 3. Run NodeWatch with the desired file to execute:
 
 ```bash
-$ nodewatch [filename]
+$ browatch [filename]
 ```
 
 - If no filename is provided, `app.js` will be used as the default file.
@@ -136,9 +136,9 @@ $ nodewatch [filename]
 In the project directory, there are two files: `server.js` and `test.js`. To run the application using NodeWatch with `test.js` as the entry file, execute the following command:
 
 ```bash
-nodewatch test.js
-OR
 browatch test.js
+OR
+nodewatch test.js
 ```
 
 You will see the terminal logs indicating the startup process. While the application is running, try changing the text within a `console.log` statement in the `test.js` file. NodeWatch will detect the change and automatically restart the application, reflecting the updated log message in the terminal.
