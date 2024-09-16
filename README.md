@@ -1,8 +1,20 @@
-# nodeWatch
+# NodeWatch (browatch)
 
-**nodeWatch** is a command-line tool that monitors changes in a Node.js application and automatically restarts it whenever a file is added, modified, or removed. It aims to improve the development workflow by eliminating the need to manually restart the application after every code change.
+**NodeWatch (browatch)** is a command-line tool that monitors changes in a Node.js application and automatically restarts it whenever a file is added, modified, or removed. It aims to improve the development workflow by eliminating the need to manually restart the application after every code change.
 
-![nodewatch starting new process detecting change in express server](https://i.imgur.com/wZfUcIr.png)
+![NodeWatch starting new process detecting change in express server](https://i.imgur.com/wZfUcIr.png)
+
+## Run as NPM Module
+
+```
+$ sudo npm install -g nodewatch
+// Execute on the node project you're working!
+$ nodewatch [server-file]
+i.e
+$ nodewatch index.js
+OR
+$ browatch index.js
+```
 
 ## Features
 
@@ -21,12 +33,12 @@ Node.js child processes are used to create new processes and communicate with th
 
 Now, let's examine how each of the methods for creating child processes handles the shell and stream:
 
-| Method    | Shell | Stream |
-|-----------|-------|--------|
-| `exec`    | Yes   | No     |
-| `execFile`| No    | No     |
-| `spawn`   | No    | Yes    |
-| `fork`    | No    | Yes    |
+| Method     | Shell | Stream |
+| ---------- | ----- | ------ |
+| `exec`     | Yes   | No     |
+| `execFile` | No    | No     |
+| `spawn`    | No    | Yes    |
+| `fork`     | No    | Yes    |
 
 - `exec`: The `exec` method uses the shell to execute a command. When using `exec`, you can use shell-specific syntax and execute complex commands, making it suitable for running shell scripts. As a result, `shell: yes`.
 
@@ -58,18 +70,14 @@ const start = debounce(() => {
   spawn('node', [name], { stdio: 'inherit' });
 }, 100);
 
-chokidar
-  .watch('.')
-  .on('add', start)
-  .on('change', start)
-  .on('unlink', start);
+chokidar.watch('.').on('add', start).on('change', start).on('unlink', start);
 ```
 
 The `chokidar` package is used to watch for file changes in the current directory. When a change is detected (add, modify, or remove), the `start` function is called using `lodash.debounce` to prevent excessive restarts during rapid file changes. The `start` function kills the previous child process (if it exists) and starts a new one by spawning the Node.js application with the specified file name.
 
 Overall, nodeWatch provides an efficient and user-friendly way to streamline the development process by automatically monitoring and restarting the Node.js application on file changes, enhancing productivity, and reducing manual effort.
 
-## Installation
+## Installation from git repository
 
 1. Clone the repository or download the source code.
 
@@ -101,7 +109,7 @@ $ npm install
 $ sudo npm link
 ```
 
-This will create a symbolic link for the app.js file, allowing you to run the app from any directory (globally) by typing `nodewatch` or `watchbro` in the terminal.
+This will create a symbolic link for the app.js file, allowing you to run the app from any directory (globally) by typing `nodewatch` or `browatch` in the terminal.
 
 ## Usage
 
@@ -121,7 +129,7 @@ $ nodewatch [filename]
 
 5. Whenever a file is added, modified, or removed, NodeWatch will automatically restart the Node.js application and display the updated status in the terminal.
 
-**NOTE**: Either of the commands `nodewatch` or `watchbro` works the same!
+**NOTE**: Either of the commands `nodewatch` or `browatch` works the same!
 
 ## Example
 
@@ -129,6 +137,8 @@ In the project directory, there are two files: `server.js` and `test.js`. To run
 
 ```bash
 nodewatch test.js
+OR
+browatch test.js
 ```
 
 You will see the terminal logs indicating the startup process. While the application is running, try changing the text within a `console.log` statement in the `test.js` file. NodeWatch will detect the change and automatically restart the application, reflecting the updated log message in the terminal.
@@ -140,7 +150,11 @@ You will see the terminal logs indicating the startup process. While the applica
 - [caporal](https://www.npmjs.com/package/caporal) - For building the command-line interface.
 - [chalk](https://www.npmjs.com/package/chalk) - For styling and coloring the
 
-## Screenshots 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Screenshots
 
 ![nodewatch help command](https://i.imgur.com/RmdKWN0.png)
 
