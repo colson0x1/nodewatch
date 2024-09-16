@@ -1,6 +1,6 @@
 {
   "name": "browatch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NodeWatch (browatch) is a CLI tool that monitors changes to your node app, upon change detection, restarts your node/express app itself.",
   "main": "app.js",
   "scripts": {
