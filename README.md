@@ -1,4 +1,4 @@
-# NodeWatch (browatch)
+# NodeWatch (browatch npm)
 
 **NodeWatch (browatch)** is a command-line tool that monitors changes in a Node.js application and automatically restarts it whenever a file is added, modified, or removed. It aims to improve the development workflow by eliminating the need to manually restart the application after every code change.
 
