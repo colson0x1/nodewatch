@@ -1,23 +1,23 @@
 {
-  "name": "nodewatch",
+  "name": "browatch",
   "version": "1.0.0",
-  "description": "",
+  "description": "NodeWatch (browatch) is a CLI tool that monitors changes to your node app, upon change detection, restarts your node/express app itself.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/colson0x1/nodewatch.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "COLSON",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/colson0x1/nodewatch/issues"
   },
   "homepage": "https://github.com/colson0x1/nodewatch#readme",
   "bin": {
+    "browatch": "app.js",
     "nodewatch": "app.js",
     "watchbro": "app.js"
   },
@@ -28,5 +28,16 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "lodash.debounce": "^4.0.8"
-  }
+  },
+  "keywords": [
+    "nodemon",
+    "file watcher",
+    "file-monitoring",
+    "CLI monitoring tool",
+    "process restart",
+    "watch node files",
+    "auto restart node files",
+    "express server",
+    "express server restart"
+  ]
 }
